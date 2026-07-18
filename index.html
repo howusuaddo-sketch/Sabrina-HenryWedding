@@ -1151,8 +1151,8 @@
   const EMAILJS = {
     publicKey: '7PhHefUUQ3eOGA96Z',
     serviceId: 'service_lz3qyvi',
-    coupleTemplate: 'template_fjl8ju9',   // notification to sabrina.henry.wedding@gmx.co.uk
-    guestTemplate:  'template_dmcjivo'    // styled confirmation to the guest
+    coupleTemplate: 'template_fjl8ku9',   // "Auto-Reply" template: notification to sabrina.henry.wedding@gmx.co.uk
+    guestTemplate:  'template_dmcjivo'    // "Auto-Reply Email to us" template: styled confirmation to the guest
   };
   const FORMSUBMIT_FALLBACK = 'https://formsubmit.co/ajax/sabrina.henry.wedding@gmx.co.uk';
 
@@ -1166,7 +1166,12 @@
         user_id: EMAILJS.publicKey,
         template_params: params
       })
-    }).then(res => { if (!res.ok) throw new Error('emailjs failed'); });
+    }).then(async res => {
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '');
+        throw new Error('EmailJS error ' + res.status + ': ' + detail);
+      }
+    });
   }
 
   const rsvpForm = document.getElementById('rsvp-form');
@@ -1195,8 +1200,8 @@
     try {
       // 1) notification to the couple (critical)
       await sendViaEmailJS(EMAILJS.coupleTemplate, params);
-      // 2) styled confirmation to the guest (best effort; don't block the thank-you if it hiccups)
-      sendViaEmailJS(EMAILJS.guestTemplate, params).catch(() => {});
+      // 2) styled confirmation to the guest (best effort; error visible in browser console)
+      sendViaEmailJS(EMAILJS.guestTemplate, params).catch(err => console.warn('Guest confirmation failed:', err.message));
       rsvpForm.style.display = 'none';
       document.getElementById('rsvp-thanks').style.display = 'block';
     } catch (err) {
