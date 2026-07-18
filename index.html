@@ -1143,9 +1143,75 @@
   const screenEl = document.getElementById('envelope-screen');
   const mainEl = document.getElementById('main');
   let opened = false;
+
+  // ── Envelope opening sound (synthesised: seal pop, paper swish, soft chime) ──
+  function playOpeningSound(){
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      const ctx = new AC();
+      if (ctx.state === 'suspended') ctx.resume();
+      const now = ctx.currentTime;
+      const master = ctx.createGain();
+      master.gain.value = 0.5;
+      master.connect(ctx.destination);
+
+      // helper: a buffer of white noise
+      function noiseSource(){
+        const buf = ctx.createBuffer(1, ctx.sampleRate * 1.2, ctx.sampleRate);
+        const d = buf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        return src;
+      }
+
+      // 1) the wax seal breaking: a short, soft pop
+      const pop = noiseSource();
+      const popFilter = ctx.createBiquadFilter();
+      popFilter.type = 'lowpass';
+      popFilter.frequency.setValueAtTime(900, now);
+      const popGain = ctx.createGain();
+      popGain.gain.setValueAtTime(0.55, now);
+      popGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      pop.connect(popFilter).connect(popGain).connect(master);
+      pop.start(now); pop.stop(now + 0.15);
+
+      // 2) paper swish as the flap lifts and the letter slides out
+      const swish = noiseSource();
+      const swishFilter = ctx.createBiquadFilter();
+      swishFilter.type = 'bandpass';
+      swishFilter.Q.value = 1.2;
+      swishFilter.frequency.setValueAtTime(700, now + 0.15);
+      swishFilter.frequency.exponentialRampToValueAtTime(2600, now + 0.75);
+      const swishGain = ctx.createGain();
+      swishGain.gain.setValueAtTime(0.0001, now + 0.15);
+      swishGain.gain.exponentialRampToValueAtTime(0.18, now + 0.35);
+      swishGain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+      swish.connect(swishFilter).connect(swishGain).connect(master);
+      swish.start(now + 0.15); swish.stop(now + 1.0);
+
+      // 3) a gentle chime as the names appear (G5, B5, D6)
+      [[784, 1.05], [988, 1.2], [1175, 1.35]].forEach(([freq, t]) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, now + t);
+        g.gain.exponentialRampToValueAtTime(0.16, now + t + 0.03);
+        g.gain.exponentialRampToValueAtTime(0.001, now + t + 1.1);
+        osc.connect(g).connect(master);
+        osc.start(now + t); osc.stop(now + t + 1.2);
+      });
+
+      setTimeout(() => { try { ctx.close(); } catch(e){} }, 3500);
+    } catch (e) { /* sound is a garnish: never let it break the opening */ }
+  }
+
   envelope.addEventListener('click', () => {
     if (opened) return;
     opened = true;
+    playOpeningSound();
     envelope.classList.add('open');
     // let the seal break, flap lift and letter rise, then cross-fade to the site
     setTimeout(() => {
