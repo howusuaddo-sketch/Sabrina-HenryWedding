@@ -1070,6 +1070,23 @@
   document.querySelectorAll('.lang-toggle button').forEach(b =>
     b.addEventListener('click', () => setLang(b.dataset.lang)));
 
+  // ── Always start at the top of the page, on every visit ──
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    // remove any leftover #anchor from the address so reloads never jump mid-page
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  });
+
+  // ── Kindly Reply: reliable smooth scroll to the RSVP section ──
+  document.querySelectorAll('a[href="#rsvp"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.getElementById('rsvp').scrollIntoView({behavior: 'smooth', block: 'start'});
+    });
+  });
+
   // ── Envelope reveal ──
   const envelope = document.getElementById('envelope');
   const screenEl = document.getElementById('envelope-screen');
@@ -1125,12 +1142,12 @@
     URL.revokeObjectURL(a.href);
   });
 
-  // ── Scroll-in reveal for photo frames ──
+  // ── Scroll-in reveal for photo frames (replays on every scroll) ──
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+        e.target.classList.toggle('in-view', e.isIntersecting);
       });
     }, {threshold:.22, rootMargin:'0px 0px -8% 0px'});
     revealEls.forEach(el => io.observe(el));
