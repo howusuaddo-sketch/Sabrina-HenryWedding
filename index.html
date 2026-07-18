@@ -447,6 +447,8 @@
   .faq-list details[open] summary::after{transform:rotate(45deg)}
   .faq-list .faq-a{padding:0 .3rem 1.3rem;color:#6b5257;font-size:1.05rem;line-height:1.7}
 
+  .top-btn{margin-top:3rem;cursor:pointer}
+
   footer{
     background:linear-gradient(180deg,var(--sage) 0%,#98a67b 100%);
     color:var(--sage-dark);
@@ -968,6 +970,7 @@
           <div class="faq-a">Please email <a href="mailto:sabrina.henry.wedding@gmx.co.uk" style="color:var(--rosewood-deep)">sabrina.henry.wedding@gmx.co.uk</a></div>
         </details>
       </div>
+      <button type="button" class="btn btn-outline top-btn" id="back-to-top">Scroll to the Top</button>
     </div>
   </section>
 
@@ -1053,6 +1056,7 @@
       'Die Trauung und die Feier finden komplett im Casa Paradiso statt. Wenn ihr dort übernachtet, gibt es also null Anfahrt. Wenn ihr in der Nähe wohnt, empfehlen wir, ein Taxi über euer Hotel vorzubestellen. Alle Optionen findet ihr oben im Bereich Transport.',
       'Bitte schreibt uns eine E-Mail an <a href="mailto:sabrina.henry.wedding@gmx.co.uk" style="color:var(--rosewood-deep)">sabrina.henry.wedding@gmx.co.uk</a>'
     ],
+    '.top-btn': ['Nach oben scrollen'],
     'footer .eyebrow': ['04 . 06 . 2027 &nbsp;&middot;&nbsp; Kos, Griechenland']
   };
 
@@ -1110,6 +1114,23 @@
     }
     requestAnimationFrame(frame);
   }
+  document.getElementById('back-to-top').addEventListener('click', () => {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !window.requestAnimationFrame){ window.scrollTo(0, 0); return; }
+    const from = window.scrollY || window.pageYOffset || 0;
+    const duration = 900;
+    let startT = null;
+    function frame(t){
+      if (startT === null) startT = t;
+      const p = Math.min(1, (t - startT) / duration);
+      const ease = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+      window.scrollTo(0, from * (1 - ease));
+      if (p < 1) requestAnimationFrame(frame);
+      else window.scrollTo(0, 0);
+    }
+    requestAnimationFrame(frame);
+  });
+
   document.querySelectorAll('a[href="#rsvp"]').forEach(a => {
     a.addEventListener('click', e => {
       e.preventDefault();
