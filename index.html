@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --rosewood:#b46a72;        /* Rosewood */
@@ -103,24 +104,17 @@
   .envelope.open .env-flap{transform:rotateX(180deg);z-index:0;transition-delay:.1s}
   .wax-seal{
     position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
-    width:clamp(92px,20%,170px);aspect-ratio:1/1;border-radius:50%;z-index:5;
-    background:radial-gradient(circle at 34% 30%, #fffdf5 0%, var(--cream-warm) 55%, #ecdcbd 100%);
-    box-shadow:
-      0 5px 14px rgba(0,0,0,.24),
-      inset 0 2px 5px rgba(255,255,255,.85),
-      inset 0 -5px 10px rgba(140,120,80,.24);
-    display:flex;align-items:center;justify-content:center;
+    width:clamp(110px,26%,200px);z-index:5;
+    filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));
     transition:transform .6s cubic-bezier(.5,0,.7,.4), opacity .5s ease .1s;
     will-change:transform,opacity;
   }
-  .wax-seal::before{
-    content:"";position:absolute;inset:9%;border-radius:50%;
-    border:1px solid var(--sage);
+  .wax-seal svg{width:100%;height:auto;display:block}
+  .wax-seal .seal-ring{
+    font-family:'Jost',sans-serif;font-weight:400;font-size:11px;letter-spacing:3.5px;
+    text-transform:uppercase;
   }
-  .wax-seal span{
-    font-family:'Pinyon Script',cursive;font-size:clamp(1.9rem,5vw,3.4rem);color:var(--rosewood);
-    transform:translateY(-2px);
-  }
+  .wax-seal .seal-init{font-family:'Pinyon Script',cursive;font-size:34px}
   .envelope.open .wax-seal{transform:translate(-50%,-50%) scale(.3) rotate(-8deg);opacity:0}
   .tap-hint{color:var(--cream);opacity:.9;text-align:center}
   .tap-hint .eyebrow{display:block;margin-bottom:.7rem;color:var(--cream)}
@@ -359,6 +353,14 @@
   .swatch span{font-family:'Jost',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.18em;
     text-transform:uppercase;color:#6b5257}
 
+  /* moodboard note */
+  .mood-note{
+    font-family:'Manrope',sans-serif;font-weight:600;font-size:.92rem;line-height:1.6;
+    color:var(--rosewood-deep);background:rgba(180,106,114,.1);
+    border:1px solid rgba(180,106,114,.35);border-radius:16px;
+    max-width:520px;margin:1.6rem auto 0;padding:1rem 1.5rem;text-align:center;
+  }
+
   /* Timetable */
   .timeline{max-width:560px;margin:0 auto;text-align:left}
   .tl-row{
@@ -582,6 +584,28 @@
   .env-flap{border-radius:14px 14px 0 0}
   .env-letter{border-radius:10px}
 
+  /* ── modern typography: Fraunces for display, Manrope for reading, script & labels unchanged ── */
+  body{font-family:'Manrope',sans-serif;font-weight:400}
+  /* romantic serif italic kept for the storytelling moments */
+  .story-text,.sec-lede,.rsvp p.lede,.venue-sub,#rsvp-thanks p,
+  .hero .intro,.place,.tap-hint em{font-family:'Cormorant Garamond',serif}
+  /* characterful modern serif for display text */
+  .section h2,.rsvp h2{font-family:'Fraunces',serif;font-weight:400;letter-spacing:.34em;text-indent:.34em}
+  .std-title{font-family:'Fraunces',serif;font-weight:400}
+  .date-line,.cd-num{font-family:'Fraunces',serif;font-weight:300}
+  .venue-name{font-family:'Fraunces',serif;font-weight:500}
+  .card h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem}
+  .faq-list summary{font-family:'Fraunces',serif;font-weight:500;font-size:1.08rem}
+  #rsvp-thanks .script{font-family:'Pinyon Script',cursive}
+  /* clean modern reading text */
+  .card p{font-size:.95rem;line-height:1.7;font-weight:400}
+  .faq-a{font-size:.95rem;line-height:1.75}
+  .tl-event{font-size:1.02rem;font-weight:500;color:#4f383d}
+  .venue-facts{font-family:'Jost',sans-serif}
+  .field input[type=text],.field input[type=email],.field select,.field textarea{
+    font-family:'Manrope',sans-serif;font-size:1rem}
+  .map-label{font-family:'Jost',sans-serif}
+
   /* transport: centre the 4th card (Public Bus) under Car Rental on wide screens */
   @media (min-width:840px){
     #travel .cards{grid-template-columns:repeat(3,1fr)}
@@ -607,7 +631,45 @@
     </div>
     <div class="env-front"></div>
     <div class="env-flap"></div>
-        <div class="wax-seal"><span>S&amp;H</span></div>
+        <div class="wax-seal" aria-hidden="true">
+      <svg viewBox="0 0 200 224" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="wax" cx="38%" cy="32%" r="75%">
+            <stop offset="0%" stop-color="#a85b65"/>
+            <stop offset="55%" stop-color="#8d4750"/>
+            <stop offset="100%" stop-color="#5f2b32"/>
+          </radialGradient>
+          <radialGradient id="waxDisc" cx="42%" cy="36%" r="80%">
+            <stop offset="0%" stop-color="#9c515b"/>
+            <stop offset="100%" stop-color="#6e343c"/>
+          </radialGradient>
+          <path id="ringPath" d="M100,100 m-64,0 a64,64 0 1,1 128,0 a64,64 0 1,1 -128,0"/>
+        </defs>
+        <!-- irregular molten wax blob with a drip -->
+        <path fill="url(#wax)" d="M100,14
+          C128,10 158,26 172,52 C186,76 190,108 176,136
+          C168,153 150,168 128,175 C120,178 116,183 117,192
+          C118,204 108,214 98,210 C90,207 88,196 90,188
+          C91,183 88,179 82,177 C56,172 34,156 24,130
+          C13,102 20,66 42,42 C58,24 76,17 100,14 Z"/>
+        <!-- soft highlight -->
+        <ellipse cx="74" cy="52" rx="42" ry="20" fill="#c98f96" opacity=".35" transform="rotate(-18 74 52)"/>
+        <!-- pressed inner disc -->
+        <circle cx="100" cy="100" r="54" fill="url(#waxDisc)"/>
+        <circle cx="100" cy="100" r="54" fill="none" stroke="#552730" stroke-width="1.6" opacity=".8"/>
+        <circle cx="100" cy="99" r="54" fill="none" stroke="#c98f96" stroke-width="1" opacity=".55"/>
+        <!-- embossed ring lettering -->
+        <text class="seal-ring" fill="#c9939a" opacity=".85" dy="1">
+          <textPath href="#ringPath" startOffset="0">Sabrina &amp; Henry &#8226; Kos &#8226; 2027 &#8226;</textPath>
+        </text>
+        <text class="seal-ring" fill="#4e232b">
+          <textPath href="#ringPath" startOffset="0">Sabrina &amp; Henry &#8226; Kos &#8226; 2027 &#8226;</textPath>
+        </text>
+        <!-- centred embossed initials -->
+        <text class="seal-init" x="100" y="108" text-anchor="middle" fill="#472027" opacity=".85">S&amp;H</text>
+        <text class="seal-init" x="100" y="106" text-anchor="middle" fill="#fff7e6">S&amp;H</text>
+      </svg>
+    </div>
   </button>
   <div class="tap-hint">
     <span class="eyebrow">You are invited</span>
@@ -897,6 +959,7 @@
             <a class="mood-link" href="https://uk.pinterest.com/sabrina_inspiration_/ladies-inspiration/" target="_blank" rel="noopener">Ladies' Moodboard</a>
             <a class="mood-link" href="https://uk.pinterest.com/sabrina_inspiration_/gentelmens-inspiration/" target="_blank" rel="noopener">Gentlemen's Moodboard</a>
           </div>
+          <p class="mood-note">Please choose your outfit in the colours of our colour palette below. The moodboards are for style inspiration only.</p>
         </div>
       </div>
       <div class="swatches">
@@ -1154,6 +1217,7 @@
     '.card .link': ['Zimmer ansehen & buchen','Zur Website','Zur Website','Transfer-Infos','Mietwagen am KGS','Karte','Karte','Karte','Karte','Karte','Karte'],
     '.figure > .eyebrow': ['Damen &middot; lange oder Midi-Kleider','Herren &middot; leichte Anzüge, Krawatte optional','Inspiration gefällig? Stöbert in diesen Moodboards'],
     '.mood-link': ['Moodboard für Damen','Moodboard für Herren'],
+    '.mood-note': ['Bitte wählt euer Outfit in den Farben unserer Farbpalette unten. Die Moodboards dienen als Stil-Inspiration.'],
     '.swatch span': ['Vanillecreme','Blütenrosa','Rosenholz','Salbeigrün','Nebelblau','Mitternachtsblau'],
     '.tl-event': ['Cocktailempfang','Trauung','Fotoshooting mit Familie & Freunden','Empfang & Platznehmen zum Dinner','Dinner','Party','Ausklang in Lounge-Atmosphäre','Ende des Tages'],
     '.rsvp h2': ['Rückmeldung'],
