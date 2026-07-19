@@ -491,6 +491,103 @@
     html{scroll-behavior:auto}
     .reveal{opacity:1 !important;transform:none !important}
   }
+
+  /* ════════ MODERN SKIN (review) — shapes, depth & micro-interactions only; colours unchanged ════════ */
+  :root{
+    --shadow-rest: 0 1px 2px rgba(95,45,53,.05), 0 10px 30px rgba(95,45,53,.08);
+    --shadow-lift: 0 4px 10px rgba(95,45,53,.08), 0 18px 44px rgba(95,45,53,.16);
+  }
+  ::selection{background:rgba(180,106,114,.25)}
+
+  /* pill buttons with a soft lift on hover */
+  .btn,.top-btn{border-radius:999px}
+  .btn{transition:all .35s cubic-bezier(.2,.8,.2,1)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(46,20,25,.28)}
+  .copy-btn,.mood-link{border-radius:999px}
+
+  /* cards: rounder, softer, floating */
+  .card{
+    border-radius:22px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(180,106,114,.16);
+    box-shadow:var(--shadow-rest);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .card.featured{background:rgba(180,106,114,.09)}
+  .venue-card{
+    border-radius:26px;background:rgba(255,255,255,.72);
+    border:1px solid rgba(180,106,114,.18);box-shadow:var(--shadow-rest);
+  }
+  .code-box{border-radius:18px}
+  .rsvp .deadline{border-radius:999px}
+
+  /* photo frames: rounded gallery style */
+  .photo-frame{border-radius:18px;padding:12px 12px 14px;
+    box-shadow:0 2px 6px rgba(95,45,53,.08), 0 24px 50px rgba(95,45,53,.20)}
+  .photo-frame img{border-radius:10px}
+  .photo-frame::after{inset:7px;border-radius:12px}
+
+  /* section divider: soft gradient bar instead of dotted line */
+  .sec-rule,.rule{width:72px;height:4px;border-radius:999px;
+    background:linear-gradient(90deg,var(--sage),rgba(168,181,138,.35))}
+  .sec-rule::before,.sec-rule::after,.rule::before,.rule::after{display:none}
+
+  /* form: filled inputs with a focus ring */
+  .field input[type=text],.field input[type=email],.field select,.field textarea{
+    background:rgba(180,106,114,.07);
+    border:1px solid rgba(180,106,114,.14);border-bottom:1px solid rgba(180,106,114,.14);
+    border-radius:14px;padding:.95rem 1.1rem;
+    transition:box-shadow .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    background:rgba(255,255,255,.85);
+    border-color:rgba(168,181,138,.0);border-bottom-color:rgba(168,181,138,.0);
+    box-shadow:0 0 0 3px rgba(168,181,138,.45);
+  }
+  .choice span{border-radius:14px;background:rgba(255,255,255,.5);
+    transition:all .3s cubic-bezier(.2,.8,.2,1)}
+  .choice input:checked + span{box-shadow:0 8px 20px rgba(95,45,53,.22)}
+
+  /* FAQs: floating accordion cards */
+  .faq-list details{
+    background:rgba(255,255,255,.68);border:1px solid rgba(180,106,114,.15);
+    border-radius:16px;margin-bottom:.75rem;padding:0 1.25rem;
+    box-shadow:0 1px 2px rgba(95,45,53,.04);
+    transition:box-shadow .3s ease;
+  }
+  .faq-list details[open]{box-shadow:var(--shadow-rest)}
+  .faq-list summary{padding:1.15rem .1rem}
+  .faq-list summary::after{
+    width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+    background:rgba(168,181,138,.18);border-radius:999px;font-size:1rem;
+  }
+
+  /* timetable: rows as soft cards with pill time badges */
+  .tl-row{
+    border-bottom:none;background:rgba(255,255,255,.6);
+    border:1px solid rgba(168,181,138,.3);border-radius:14px;
+    margin-bottom:.65rem;padding:.9rem 1.2rem;align-items:center;
+  }
+  .tl-time{
+    background:rgba(168,181,138,.2);color:#5f6b46;border-radius:999px;
+    padding:.45rem .4rem;text-align:center;
+  }
+
+  /* palette swatches: squircles */
+  .swatch i{border-radius:16px}
+
+  /* envelope: gently rounder */
+  .env-body,.env-front{border-radius:14px}
+  .env-flap{border-radius:14px 14px 0 0}
+  .env-letter{border-radius:10px}
+
+  /* transport: centre the 4th card (Public Bus) under Car Rental on wide screens */
+  @media (min-width:840px){
+    #travel .cards{grid-template-columns:repeat(3,1fr)}
+    #travel .card:nth-child(4){grid-column:2}
+  }
+
 </style>
 </head>
 <body>
