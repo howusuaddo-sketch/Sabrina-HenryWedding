@@ -21,7 +21,7 @@
     --sage:#a8b58a;            /* Sage Leaf */
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scrollbar-gutter:stable}
   body{
     font-family:'Cormorant Garamond',serif;
     background:var(--rosewood);
@@ -490,10 +490,11 @@
     position:fixed;inset:0;z-index:600;
     background:radial-gradient(130% 110% at 50% 0%, var(--rosewood) 0%, var(--rosewood-dark) 55%, var(--rosewood-darker) 100%);
     display:flex;flex-direction:column;align-items:center;justify-content:center;
-    opacity:0;visibility:hidden;
-    transition:opacity .5s ease, visibility .5s;
+    opacity:0;visibility:hidden;transform:scale(1.03);
+    transition:opacity .5s ease, visibility .5s, transform .55s cubic-bezier(.2,.8,.2,1);
+    will-change:opacity,transform;
   }
-  .menu-overlay.open{opacity:1;visibility:visible}
+  .menu-overlay.open{opacity:1;visibility:visible;transform:scale(1)}
   .menu-close{
     position:absolute;top:1.1rem;right:1.1rem;
     width:46px;height:46px;border-radius:999px;
@@ -505,7 +506,9 @@
   .menu-list{
     display:flex;flex-direction:column;align-items:center;gap:.35rem;
     max-height:72vh;overflow-y:auto;padding:1rem 2rem;
+    scrollbar-width:none;-ms-overflow-style:none;
   }
+  .menu-list::-webkit-scrollbar{display:none}
   .menu-item{
     display:flex;align-items:baseline;gap:1rem;cursor:pointer;text-decoration:none;
     font-family:'Fraunces',serif;font-weight:400;
@@ -530,7 +533,8 @@
   }
   .menu-foot-script{font-family:'Pinyon Script',cursive;font-size:1.5rem;color:var(--cream)}
   .menu-foot .eyebrow{color:var(--sage)}
-  body.menu-locked{overflow:hidden}
+  body.menu-locked{overflow:hidden;padding-right:var(--sbw,0px)}
+  body.menu-locked .lang-toggle{right:calc(1rem + var(--sbw,0px))}
 
   /* language toggle */
   .lang-toggle{
@@ -1399,6 +1403,11 @@
   const menuBtn = document.getElementById('menu-btn');
   const menuOverlay = document.getElementById('menu-overlay');
   function openMenu(){
+    // modern browsers reserve the scrollbar gutter via CSS; older ones get an exact-width
+    // padding fallback so the page never shifts or flashes a scrollbar when locking
+    const gutterSupported = window.CSS && CSS.supports && CSS.supports('scrollbar-gutter','stable');
+    const sbw = gutterSupported ? 0 : Math.max(0, window.innerWidth - document.documentElement.clientWidth);
+    document.documentElement.style.setProperty('--sbw', sbw + 'px');
     menuOverlay.classList.add('open');
     menuOverlay.setAttribute('aria-hidden', 'false');
     menuBtn.setAttribute('aria-expanded', 'true');
@@ -1409,6 +1418,7 @@
     menuOverlay.setAttribute('aria-hidden', 'true');
     menuBtn.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-locked');
+    document.documentElement.style.setProperty('--sbw', '0px');
   }
   menuBtn.addEventListener('click', openMenu);
   document.getElementById('menu-close').addEventListener('click', closeMenu);
