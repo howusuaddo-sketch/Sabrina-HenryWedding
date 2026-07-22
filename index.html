@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<!-- Social / WhatsApp link preview (Open Graph) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sabrina & Henry">
+<meta property="og:title" content="Sabrina & Henry — 04.06.27, Kos">
+<meta property="og:description" content="We're getting married! Join us beneath the Greek sun in Kos. Tap to open your invitation.">
+<meta property="og:image" content="https://sabrinahenrywedding2027.com/preview-card.jpg">
+<meta property="og:image:width" content="900">
+<meta property="og:image:height" content="1200">
+<meta property="og:url" content="https://sabrinahenrywedding2027.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sabrina & Henry — 04.06.27, Kos">
+<meta name="twitter:description" content="We're getting married! Join us beneath the Greek sun in Kos.">
+<meta name="twitter:image" content="https://sabrinahenrywedding2027.com/preview-card.jpg">
 <title>Sabrina &amp; Henry | Save the Date</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,7 +298,7 @@
   .map-label.strong{fill:var(--rosewood-deep);font-weight:400}
   .map-route{stroke:var(--sage);stroke-width:1.6;stroke-dasharray:2 6;stroke-linecap:round;fill:none}
   .map-dot{fill:var(--sage)}
-  .map-pin{fill:var(--rosewood)}
+  .map-pin{fill:#b46a72}
   .map-pulse{fill:none;stroke:var(--rosewood);stroke-width:1.5;opacity:.7;
     transform-origin:300px 78px;animation:mapPulse 2.4s ease-out infinite}
   @keyframes mapPulse{
@@ -303,6 +317,7 @@
     border-radius:3px;background:rgba(168,181,138,.12);
   }
   .code-box .eyebrow{color:#6f7d54;display:block;margin-bottom:.6rem}
+  .code-valid{display:block;margin-top:.9rem;font-family:'Jost',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:#8a5f66}
   .code-line{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
   .code-value{font-family:'Jost',sans-serif;font-weight:400;font-size:1rem;letter-spacing:.22em;color:var(--rosewood-deep)}
   .copy-btn{
@@ -569,7 +584,7 @@
   /* pill buttons with a soft lift on hover */
   .btn,.top-btn{border-radius:999px}
   .btn{transition:all .35s cubic-bezier(.2,.8,.2,1)}
-  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(46,20,25,.28)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(103,44,27,.28)}
   .copy-btn,.mood-link{border-radius:999px}
 
   /* cards: rounder, softer, floating */
@@ -639,6 +654,12 @@
   .tl-time{
     background:rgba(168,181,138,.2);color:#5f6b46;border-radius:999px;
     padding:.45rem .4rem;text-align:center;
+  }
+
+  .save-note{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.15rem;color:#8a5f66;text-align:center;
+    margin-top:2.2rem;letter-spacing:.03em;
   }
 
   /* palette swatches: squircles */
@@ -870,6 +891,7 @@
             <span class="code-value" id="disc-code">HENRYANDSABRINA</span>
             <button class="copy-btn" id="copy-code" type="button">Copy code</button>
           </div>
+          <span class="code-valid">Valid until 31 January 2027</span>
         </div>
         <div class="hero-actions">
           <a class="btn btn-rose" href="https://www.grecotel.com/casa-paradiso/" target="_blank" rel="noopener">Visit &amp; Book Casa Paradiso</a>
@@ -974,7 +996,7 @@
               <path d="M47 46 Q42 50 40 78 Q39 88 44 90 L48 87 Q45 70 49 52 Z" fill="#6b4433"/>
               <path d="M73 46 Q78 50 80 78 Q81 88 76 90 L72 87 Q75 70 71 52 Z" fill="#6b4433"/>
               <path d="M43 96 Q60 102 77 96 L98 212 Q60 226 22 212 Z" fill="#f7c8d3"/>
-              <path d="M43 96 Q60 102 77 96 L98 212 Q60 226 22 212 Z" fill="none" stroke="#dfa3b2" stroke-width="1" opacity=".7"/>
+              <path d="M43 96 Q60 102 77 96 L98 212 Q60 226 22 212 Z" fill="none" stroke="#9a545d" stroke-width="1" opacity=".7"/>
             </svg>
             <svg viewBox="0 0 120 240" width="104" height="208" role="img" aria-label="Woman in a sage leaf evening dress">
               <path d="M46 18 Q60 2 74 18 Q80 34 76 58 L70 56 Q72 36 66 28 Q60 22 54 28 Q48 36 50 56 L44 58 Q40 34 46 18 Z" fill="#2a1c14"/>
@@ -997,11 +1019,11 @@
               <path d="M56 36 h8 v6 h-8 Z" fill="#e9c9b4"/>
               <path d="M52 42 L60 50 L68 42 L66 100 H54 Z" fill="#fff7e6"/>
               <path d="M58 48 h4 l2 30 -4 8 -4 -8 Z" fill="#a8b58a"/>
-              <path d="M42 44 Q52 40 52 42 L60 52 L54 118 H42 Z" fill="#2d3a47"/>
-              <path d="M78 44 Q68 40 68 42 L60 52 L66 118 H78 Z" fill="#2d3a47"/>
-              <path d="M42 44 Q38 48 36 84 Q35 92 40 94 L45 91 Q42 68 45 50 Z" fill="#2d3a47"/>
-              <path d="M78 44 Q82 48 84 84 Q85 92 80 94 L75 91 Q78 68 75 50 Z" fill="#2d3a47"/>
-              <path d="M44 118 h32 l-3 96 h-10 l-3 -78 -3 78 h-10 Z" fill="#26313c"/>
+              <path d="M42 44 Q52 40 52 42 L60 52 L54 118 H42 Z" fill="#a9b7c6"/>
+              <path d="M78 44 Q68 40 68 42 L60 52 L66 118 H78 Z" fill="#a9b7c6"/>
+              <path d="M42 44 Q38 48 36 84 Q35 92 40 94 L45 91 Q42 68 45 50 Z" fill="#a9b7c6"/>
+              <path d="M78 44 Q82 48 84 84 Q85 92 80 94 L75 91 Q78 68 75 50 Z" fill="#a9b7c6"/>
+              <path d="M44 118 h32 l-3 96 h-10 l-3 -78 -3 78 h-10 Z" fill="#2d3a47"/>
             </svg>
             <svg viewBox="0 0 120 240" width="104" height="208" role="img" aria-label="Man in a misty sky suit with rosewood tie">
               <circle cx="60" cy="24" r="12" fill="#6b4433"/>
@@ -1020,7 +1042,7 @@
               <path d="M47 17 Q60 5 73 17 Q75 24 71 26 Q60 17 49 26 Q45 24 47 17 Z" fill="#2a1c14"/>
               <path d="M56 36 h8 v6 h-8 Z" fill="#b07b52"/>
               <path d="M52 42 L60 50 L68 42 L66 100 H54 Z" fill="#fff7e6"/>
-              <path d="M58 48 h4 l2 30 -4 8 -4 -8 Z" fill="#2d3a47"/>
+              <path d="M58 48 h4 l2 30 -4 8 -4 -8 Z" fill="#a9b7c6"/>
               <path d="M42 44 Q52 40 52 42 L60 52 L54 118 H42 Z" fill="#a8b58a"/>
               <path d="M78 44 Q68 40 68 42 L60 52 L66 118 H78 Z" fill="#a8b58a"/>
               <path d="M42 44 Q38 48 36 84 Q35 92 40 94 L45 91 Q42 68 45 50 Z" fill="#a8b58a"/>
@@ -1047,7 +1069,7 @@
         <div class="swatch"><i style="background:#a9b7c6"></i><span>Misty Sky</span></div>
         <div class="swatch"><i style="background:#2d3a47"></i><span>Midnight Lagoon</span></div>
       </div>
-      <p class="sec-lede" style="margin-top:2rem;margin-bottom:0">Please save white and ivory for the bride.</p>
+      <p class="save-note">Please save white and ivory for the bride.</p>
     </div>
   </section>
 
@@ -1263,6 +1285,7 @@
     '.venue-sub': ['Ein Strandresort an einem Sandstrand in Marmari auf Kos'],
     '.venue-facts': ['Marmari, Kos, Griechenland<br>20 Min. vom Flughafen Kos (KGS) &middot; 30 Min. von Kos-Stadt<br>2 km vom Dorf Marmari'],
     '.code-box .eyebrow': ['Gästerabatt &middot; 15 % auf euren Aufenthalt'],
+    '.code-valid': ['Gültig bis 31. Januar 2027'],
     '#copy-code': ['Code kopieren'],
     '.venue-card .hero-actions .btn': ['Casa Paradiso ansehen & buchen','Karte öffnen'],
     '.map-wrap text': ['Kos-Stadt','Flughafen Kos (KGS)','Casa Paradiso · Marmari','N'],
@@ -1295,6 +1318,7 @@
     '.figure > .eyebrow': ['Damen &middot; lange oder Midi-Kleider','Herren &middot; leichte Anzüge, Krawatte optional','Inspiration gefällig? Stöbert in diesen Moodboards'],
     '.mood-link': ['Moodboard für Damen','Moodboard für Herren'],
     '.mood-note': ['Bitte wählt euer Outfit in den Farben unserer Farbpalette unten. Die Moodboards dienen als Stil-Inspiration.'],
+    '.save-note': ['Bitte überlasst Weiß und Ivory der Braut.'],
     '.swatch span': ['Olivgrün','Blütenrosa','Rosenholz','Salbeigrün','Nebelblau','Mitternachtsblau'],
     '.tl-event': ['Cocktailempfang','Trauung','Fotoshooting mit Familie & Freunden','Empfang & Platznehmen zum Dinner','Dinner','Party','Ausklang in Lounge-Atmosphäre','Ende des Tages'],
     '.rsvp h2': ['Rückmeldung'],
