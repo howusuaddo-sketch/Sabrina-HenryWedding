@@ -525,12 +525,15 @@
   }
   .menu-list::-webkit-scrollbar{display:none}
   .menu-item{
-    display:flex;align-items:baseline;gap:1rem;cursor:pointer;text-decoration:none;
+    display:flex;align-items:baseline;gap:.8rem;cursor:pointer;text-decoration:none;
     font-family:'Fraunces',serif;font-weight:400;
-    font-size:clamp(1.45rem,4.4vh,2.3rem);letter-spacing:.05em;color:var(--cream);
+    font-size:clamp(1.3rem,4.2vh,2.3rem);letter-spacing:.04em;color:var(--cream);
+    white-space:nowrap;max-width:92vw;
     opacity:0;transform:translateY(20px);
     transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), color .25s ease;
   }
+  .menu-item .mi-label{white-space:nowrap}
+  .menu-item em{flex:none}
   .menu-overlay.open .menu-item{opacity:1;transform:none}
   .menu-item:nth-child(1){transition-delay:.08s}.menu-item:nth-child(2){transition-delay:.13s}
   .menu-item:nth-child(3){transition-delay:.18s}.menu-item:nth-child(4){transition-delay:.23s}
