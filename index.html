@@ -237,6 +237,7 @@
   .section h2{
     font-size:clamp(1.4rem,3.6vw,1.9rem);letter-spacing:.42em;text-transform:uppercase;
     font-weight:400;color:var(--rosewood-deep);margin-bottom:1rem;text-indent:.42em;
+    overflow-wrap:break-word;word-break:break-word;hyphens:auto;max-width:100%;
   }
   .sec-lede{font-style:italic;font-size:1.15rem;color:#8a5f66;margin-bottom:2.6rem;letter-spacing:.03em}
   .sec-rule{width:60px;height:1px;background:var(--sage);margin:0 auto 2.4rem;position:relative}
@@ -525,15 +526,18 @@
   }
   .menu-list::-webkit-scrollbar{display:none}
   .menu-item{
-    display:flex;align-items:baseline;gap:.8rem;cursor:pointer;text-decoration:none;
+    display:flex;align-items:baseline;gap:.7rem;cursor:pointer;text-decoration:none;
     font-family:'Fraunces',serif;font-weight:400;
-    font-size:clamp(1.3rem,4.2vh,2.3rem);letter-spacing:.04em;color:var(--cream);
-    white-space:nowrap;max-width:92vw;
+    font-size:clamp(1.15rem,4vw,2.3rem);letter-spacing:.03em;color:var(--cream);
+    white-space:nowrap;max-width:90vw;
     opacity:0;transform:translateY(20px);
     transition:opacity .55s ease, transform .55s cubic-bezier(.2,.8,.2,1), color .25s ease;
   }
-  .menu-item .mi-label{white-space:nowrap}
+  .menu-item .mi-label{white-space:nowrap;overflow:hidden;text-overflow:clip}
   .menu-item em{flex:none}
+  @media (max-width:420px){
+    .menu-item{font-size:clamp(1rem,4.6vw,1.4rem);gap:.55rem}
+  }
   .menu-overlay.open .menu-item{opacity:1;transform:none}
   .menu-item:nth-child(1){transition-delay:.08s}.menu-item:nth-child(2){transition-delay:.13s}
   .menu-item:nth-child(3){transition-delay:.18s}.menu-item:nth-child(4){transition-delay:.23s}
@@ -694,6 +698,11 @@
   .field input[type=text],.field input[type=email],.field select,.field textarea{
     font-family:'Manrope',sans-serif;font-size:1rem}
   .map-label{font-family:'Jost',sans-serif}
+
+  /* long headings (esp. German) must fit on small screens */
+  @media (max-width:520px){
+    .section h2, .rsvp h2{letter-spacing:.16em;text-indent:.16em;font-size:clamp(1.15rem,5.4vw,1.6rem)}
+  }
 
   /* transport: centre the 4th card (Public Bus) under Car Rental on wide screens */
   @media (min-width:840px){
@@ -1285,7 +1294,7 @@
       'Nach dem Zusammenziehen wurde unsere Verbindung nur noch tiefer und stärker, was zum leichtesten „Ja" unseres Lebens und zum Beginn unseres nächsten Kapitels führte. Wir können es kaum erwarten, den Anfang unserer gemeinsamen Zukunft mit euch allen zu feiern.',
       'Eure Anwesenheit auf Kos ist wirklich das größte Geschenk, denn wir wissen, dass es eine Reise ist. Wenn ihr uns dennoch etwas schenken möchtet: Bei der Feier stehen eine Kartenbox und ein QR-Code bereit, und über einen Beitrag zu unserem nächsten Abenteuer freuen wir uns sehr.'
     ],
-    '.venue-sub': ['Ein Strandresort an einem Sandstrand in Marmari auf Kos'],
+    '.venue-sub': ['Ein Strandresort an einem sandigen Küstenabschnitt in Marmari, Kos'],
     '.venue-facts': ['Marmari, Kos, Griechenland<br>20 Min. vom Flughafen Kos (KGS) &middot; 30 Min. von Kos-Stadt<br>2 km vom Dorf Marmari'],
     '.code-box .eyebrow': ['Gästerabatt &middot; 15 % auf euren Aufenthalt'],
     '.code-valid': ['Gültig bis 31. Januar 2027'],
