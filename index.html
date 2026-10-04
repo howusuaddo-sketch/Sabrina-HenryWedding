@@ -459,6 +459,55 @@
   }
   #rsvp-thanks p{font-style:italic;font-size:1.15rem;color:#8a5f66}
 
+
+  /* Gifts intro */
+  .gift-intro strong{font-weight:600;color:var(--cream)}
+  .gift-intro p{margin-bottom:1.1rem}
+  .gift-intro .gift-closing{color:var(--rosewood-deep);font-size:1.22rem}
+
+  /* Gifts — Wise-style payment card in brand palette */
+  .gift-card{
+    max-width:380px;margin:2.6rem auto 0;background:#fffbf0;
+    border:1px solid rgba(180,106,114,.18);border-radius:26px;
+    box-shadow:0 2px 6px rgba(95,45,53,.08), 0 24px 54px rgba(95,45,53,.20);
+    padding:2.2rem 2rem 1.8rem;text-align:center;
+  }
+  .gift-card-head{display:flex;align-items:center;gap:.9rem;text-align:left;margin-bottom:1.6rem}
+  .gift-avatar{
+    flex:none;width:52px;height:52px;border-radius:50%;
+    background:var(--rosewood);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Pinyon Script',cursive;font-size:1.05rem;line-height:1;
+    letter-spacing:-.02em;overflow:hidden;
+  }
+  .gift-head-text{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+  .gift-pay-to{
+    font-family:'Jost',sans-serif;font-weight:300;font-size:.6rem;letter-spacing:.26em;
+    text-transform:uppercase;color:#6f7d54;
+  }
+  .gift-name{
+    font-family:'Fraunces',serif;font-weight:500;font-size:1.08rem;line-height:1.25;
+    color:var(--rosewood-deep);
+  }
+  .gift-qr-wrap{
+    background:#fffbf0;border:1px solid rgba(168,181,138,.5);border-radius:18px;
+    padding:14px;display:inline-block;margin-bottom:1rem;
+  }
+  .gift-qr{display:block;width:min(220px,58vw);height:auto;border-radius:6px}
+  .gift-scan{
+    font-family:'Jost',sans-serif;font-weight:300;font-size:.64rem;letter-spacing:.26em;
+    text-transform:uppercase;color:#8a5f66;margin-bottom:1.4rem;
+  }
+  .gift-btn{width:100%;margin-bottom:1rem}
+  .gift-secured{
+    display:flex;align-items:center;justify-content:center;gap:.4rem;
+    font-family:'Jost',sans-serif;font-weight:300;font-size:.58rem;letter-spacing:.2em;
+    text-transform:uppercase;color:#9a848a;
+  }
+  .gift-secured::before{
+    content:"";width:12px;height:12px;border-radius:3px;background:#9fe870;flex:none;
+  }
+
   /* FAQs */
   .faq-list{max-width:640px;margin:0 auto;text-align:left}
   .faq-list details{border-bottom:1px dotted rgba(168,181,138,.8)}
@@ -1160,8 +1209,26 @@
       <span class="eyebrow sec-eyebrow">A note on giving</span>
       <h2>Gifts</h2>
       <div class="sec-rule" aria-hidden="true"></div>
-      <div class="story-text">
-        <p>Your presence in Kos truly is the greatest gift, as we know it's a journey. If you'd like to give something, a card box will be at the reception, and any contribution towards our next adventure would be very gratefully received. There will be a QR code and gift box at the venue.</p>
+      <div class="story-text gift-intro" style="max-width:620px">
+        <p>Your presence in Kos truly is the greatest gift to us, and we know it's a journey.</p>
+        <p>If you would like to contribute to our honeymoon fund, you can scan the QR code below. For your convenience, there will also be a QR code and a card box available at the venue for any cards you wish to leave. <strong>We kindly ask that you do not bring cash.</strong></p>
+        <p class="gift-closing">Most importantly, we can't wait to celebrate this special day with you and make unforgettable memories together!</p>
+      </div>
+
+      <div class="gift-card">
+        <div class="gift-card-head">
+          <div class="gift-avatar">S&amp;H</div>
+          <div class="gift-head-text">
+            <span class="gift-pay-to">Pay</span>
+            <span class="gift-name">Sabrina &amp; Henry's Honeymoon Fund</span>
+          </div>
+        </div>
+        <div class="gift-qr-wrap">
+          <img class="gift-qr" src="data:image/png;base64,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" alt="QR code to Sabrina and Henry's Wise payment page">
+        </div>
+        <p class="gift-scan">Scan to contribute</p>
+        <a class="btn btn-rose gift-btn" href="https://wise.com/pay/me/henryo1146?utm_source=request_flow" target="_blank" rel="noopener">Open Payment Link</a>
+        <span class="gift-secured">Secured by Wise</span>
       </div>
     </div>
   </section>
@@ -1330,6 +1397,16 @@
     '.mood-link': ['Moodboard für Damen','Moodboard für Herren'],
     '.mood-note': ['Bitte wählt euer Outfit in den Farben unserer Farbpalette unten. Die Moodboards dienen als Stil-Inspiration.'],
     '.save-note': ['Bitte überlasst Weiß und Ivory der Braut.'],
+    '#gifts .story-text p': [
+      'Eure Anwesenheit auf Kos ist für uns das größte Geschenk, und wir wissen, dass es eine Reise ist.',
+      'Wenn ihr zu unserer Flitterwochen-Kasse beitragen möchtet, könnt ihr den QR-Code unten scannen. Für eure Bequemlichkeit gibt es am Veranstaltungsort ebenfalls einen QR-Code sowie eine Kartenbox für alle Karten, die ihr hinterlassen möchtet. <strong>Wir bitten euch, kein Bargeld mitzubringen.</strong>',
+      'Und das Wichtigste: Wir können es kaum erwarten, diesen besonderen Tag mit euch zu feiern und gemeinsam unvergessliche Erinnerungen zu schaffen!'
+    ],
+    '.gift-pay-to': ['Bezahlen'],
+    '.gift-name': ['Flitterwochen-Kasse von Sabrina & Henry'],
+    '.gift-scan': ['Zum Beitragen scannen'],
+    '.gift-btn': ['Zahlungslink öffnen'],
+    '.gift-secured': ['Gesichert durch Wise'],
     '.swatch span': ['Olivgrün','Blütenrosa','Rosenholz','Salbeigrün','Nebelblau','Mitternachtsblau'],
     '.tl-event': ['Cocktailempfang','Trauung','Fotoshooting mit Familie & Freunden','Empfang & Platznehmen zum Dinner','Dinner','Tanzfläche öffnet','Ausklang in Lounge-Atmosphäre','Ende des Tages'],
     '.rsvp h2': ['Rückmeldung'],
